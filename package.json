@@ -1,0 +1,35 @@
+{
+  "name": "ffmpeg-quick",
+  "version": "1.0.0",
+  "description": "Quick FFmpeg presets for common video tasks / FFmpegプリセットCLI",
+  "type": "module",
+  "bin": {
+    "ffmpeg-quick": "./bin/ffmpeg-quick.js"
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ],
+  "keywords": [
+    "ffmpeg",
+    "video",
+    "compress",
+    "gif",
+    "webm",
+    "hls",
+    "cli"
+  ],
+  "author": "StudioMitsu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omitsu-dev/ffmpeg-quick"
+  },
+  "homepage": "https://32blog.com",
+  "dependencies": {
+    "commander": "^13.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
