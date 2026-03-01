@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+import { Command } from "commander";
+import { register as compress } from "../src/commands/compress.js";
+import { register as gif } from "../src/commands/gif.js";
+import { register as webm } from "../src/commands/webm.js";
+import { register as hls } from "../src/commands/hls.js";
+import { register as audio } from "../src/commands/audio.js";
+import { register as thumbnail } from "../src/commands/thumbnail.js";
+import { register as stripAudio } from "../src/commands/strip-audio.js";
+import { register as info } from "../src/commands/info.js";
+
+const program = new Command();
+
+program
+  .name("ffmpeg-quick")
+  .description("Quick FFmpeg presets for common video tasks")
+  .version("1.0.0");
+
+compress(program);
+gif(program);
+webm(program);
+hls(program);
+audio(program);
+thumbnail(program);
+stripAudio(program);
+info(program);
+
+program.parse();
