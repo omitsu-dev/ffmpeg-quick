@@ -9,6 +9,10 @@ import { register as audio } from "../src/commands/audio.js";
 import { register as thumbnail } from "../src/commands/thumbnail.js";
 import { register as stripAudio } from "../src/commands/strip-audio.js";
 import { register as info } from "../src/commands/info.js";
+import { register as concat } from "../src/commands/concat.js";
+import { register as subtitle } from "../src/commands/subtitle.js";
+import { register as speed } from "../src/commands/speed.js";
+import { register as stabilize } from "../src/commands/stabilize.js";
 
 const program = new Command();
 
@@ -25,5 +29,9 @@ audio(program);
 thumbnail(program);
 stripAudio(program);
 info(program);
+concat(program);
+subtitle(program);
+speed(program);
+stabilize(program);
 
 program.parse();
