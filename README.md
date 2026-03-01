@@ -61,6 +61,10 @@ npx ffmpeg-quick compress input.mp4
 | `thumbnail` | Extract a thumbnail image |
 | `strip-audio` | Remove audio track |
 | `info` | Show media info (ffprobe) |
+| `concat` | Join multiple videos into one |
+| `subtitle` | Burn subtitles into video |
+| `speed` | Change playback speed |
+| `stabilize` | Stabilize shaky video (2-pass) |
 
 ### Usage
 
@@ -88,6 +92,18 @@ npx ffmpeg-quick strip-audio input.mp4
 
 # Show media info
 npx ffmpeg-quick info input.mp4
+
+# Join videos (auto temp file, no manual file list)
+npx ffmpeg-quick concat part1.mp4 part2.mp4 part3.mp4
+
+# Burn subtitles with custom style
+npx ffmpeg-quick subtitle input.mp4 subs.srt --font-size 28 --color yellow
+
+# 2x speed (auto atempo chaining)
+npx ffmpeg-quick speed input.mp4 2
+
+# Stabilize shaky footage (2-pass, automatic)
+npx ffmpeg-quick stabilize shaky.mp4
 ```
 
 ### Common Options
@@ -118,6 +134,54 @@ npx ffmpeg-quick info input.mp4
 
 **thumbnail**
 - `-s, --start <sec>` — Time position in seconds (default: 1)
+
+**concat**
+- `--re-encode` — Re-encode streams (use when input codecs differ)
+
+**subtitle**
+- `--font-size <n>` — Font size (default: 24)
+- `--color <name>` — Font color: white, yellow, red, green, cyan (default: white)
+- `--position <pos>` — Position: bottom, top, center (default: bottom)
+
+**speed**
+- `<factor>` — Speed multiplier (e.g. 2 = 2x faster, 0.5 = half speed)
+- `--no-audio` — Remove audio (useful for timelapse)
+
+**stabilize**
+- `--strength <n>` — Smoothing strength, 1-30 (default: 10)
+- `--shakiness <n>` — Input shakiness estimate, 1-10 (default: 5)
+
+### The Hard Stuff, Made Easy
+
+These commands solve problems that send you down a rabbit hole every time:
+
+**`concat`** — No more manual file lists. Just pass your files:
+```bash
+# Without ffmpeg-quick: create temp file list, run concat demuxer, delete temp file
+# With ffmpeg-quick:
+npx ffmpeg-quick concat intro.mp4 main.mp4 outro.mp4
+```
+
+**`stabilize`** — 2-pass processing in one command:
+```bash
+# Without ffmpeg-quick: run pass 1 (detect), then pass 2 (transform), then delete .trf file
+# With ffmpeg-quick:
+npx ffmpeg-quick stabilize shaky.mp4
+```
+
+**`speed`** — No mental math with `setpts` and `atempo`:
+```bash
+# Without ffmpeg-quick: setpts=0.25*PTS (inverse!), atempo=2.0,atempo=2.0 (chained!)
+# With ffmpeg-quick:
+npx ffmpeg-quick speed input.mp4 4
+```
+
+**`subtitle`** — No escaping nightmares:
+```bash
+# Without ffmpeg-quick: force_style syntax, Windows path colon escaping, ASS alignment codes
+# With ffmpeg-quick:
+npx ffmpeg-quick subtitle video.mp4 subs.srt --font-size 28 --color yellow
+```
 
 ### `--dry-run` — Learn Instead of Googling
 
@@ -197,6 +261,10 @@ npx ffmpeg-quick compress input.mp4
 | `thumbnail` | サムネイル画像を抽出 |
 | `strip-audio` | 音声トラックを除去 |
 | `info` | メディア情報を表示 (ffprobe) |
+| `concat` | 複数の動画を結合 |
+| `subtitle` | 字幕を焼き込み |
+| `speed` | 再生速度を変更 |
+| `stabilize` | 手ブレ補正（2パス） |
 
 ### 使い方
 
@@ -224,6 +292,18 @@ npx ffmpeg-quick strip-audio input.mp4
 
 # メディア情報を表示
 npx ffmpeg-quick info input.mp4
+
+# 動画を結合（一時ファイル不要、並べるだけ）
+npx ffmpeg-quick concat part1.mp4 part2.mp4 part3.mp4
+
+# 字幕焼き込み（スタイル指定も簡単）
+npx ffmpeg-quick subtitle input.mp4 subs.srt --font-size 28 --color yellow
+
+# 2倍速（atempoチェーン自動）
+npx ffmpeg-quick speed input.mp4 2
+
+# 手ブレ補正（2パス自動実行）
+npx ffmpeg-quick stabilize shaky.mp4
 ```
 
 ### 共通オプション
@@ -254,6 +334,54 @@ npx ffmpeg-quick info input.mp4
 
 **thumbnail**
 - `-s, --start <sec>` — 抽出位置（秒、デフォルト: 1）
+
+**concat**
+- `--re-encode` — 再エンコード（コーデックが異なるファイルの結合時に使用）
+
+**subtitle**
+- `--font-size <n>` — フォントサイズ（デフォルト: 24）
+- `--color <name>` — 文字色: white, yellow, red, green, cyan（デフォルト: white）
+- `--position <pos>` — 表示位置: bottom, top, center（デフォルト: bottom）
+
+**speed**
+- `<factor>` — 速度倍率（例: 2 = 2倍速、0.5 = スロー）
+- `--no-audio` — 音声を除去（タイムラプス向け）
+
+**stabilize**
+- `--strength <n>` — 補正の強さ 1-30（デフォルト: 10）
+- `--shakiness <n>` — 入力のブレ推定値 1-10（デフォルト: 5）
+
+### 面倒なやつ、全部やります
+
+毎回ググるハメになるやつを1コマンドに：
+
+**`concat`** — ファイルリスト手作り不要。並べるだけ：
+```bash
+# 素のFFmpeg: 一時ファイル作成 → concat demuxer実行 → 一時ファイル削除
+# ffmpeg-quick:
+npx ffmpeg-quick concat intro.mp4 main.mp4 outro.mp4
+```
+
+**`stabilize`** — 2パス処理を1コマンドで：
+```bash
+# 素のFFmpeg: パス1(解析) → パス2(適用) → .trfファイル削除
+# ffmpeg-quick:
+npx ffmpeg-quick stabilize shaky.mp4
+```
+
+**`speed`** — `setpts`の逆数計算も`atempo`チェーンも不要：
+```bash
+# 素のFFmpeg: setpts=0.25*PTS（逆数!）, atempo=2.0,atempo=2.0（チェーン!）
+# ffmpeg-quick:
+npx ffmpeg-quick speed input.mp4 4
+```
+
+**`subtitle`** — エスケープ地獄からの解放：
+```bash
+# 素のFFmpeg: force_style構文、Windowsパスの:衝突、ASSアライメントコード…
+# ffmpeg-quick:
+npx ffmpeg-quick subtitle video.mp4 subs.srt --font-size 28 --color yellow
+```
 
 ### `--dry-run` — ググる代わりに
 
