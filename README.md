@@ -1,7 +1,5 @@
 # ffmpeg-quick
 
-Quick FFmpeg presets for common video tasks. No more memorizing complex commands.
-
 [English](#english) | [日本語](#japanese)
 
 ---
@@ -9,6 +7,33 @@ Quick FFmpeg presets for common video tasks. No more memorizing complex commands
 <a id="english"></a>
 
 ## English
+
+FFmpeg is the most powerful video tool out there. But every time you use it, this happens:
+
+```bash
+# "I just want to compress a video..."
+ffmpeg -i input.mp4 -c:v libx264 -crf 23 -preset medium -c:a aac -movflags +faststart output.mp4
+```
+
+```bash
+# "I just want to make a GIF..."
+ffmpeg -ss 10 -t 3 -i input.mp4 \
+  -vf "fps=15,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+  -loop 0 output.gif
+```
+
+What was `-c:v` again? What's the default for `-crf`? How does the palettegen filter syntax work?
+
+**Every time you Google it. Every time you open Stack Overflow. Every time you copy-paste.**
+
+ffmpeg-quick skips the "Google → copy-paste" loop:
+
+```bash
+npx ffmpeg-quick compress input.mp4
+npx ffmpeg-quick gif input.mp4 -s 10 -d 3
+```
+
+All you need to remember is a verb. `compress`, `gif`, `audio`. Add options only when you need them.
 
 ### Install
 
@@ -94,15 +119,19 @@ npx ffmpeg-quick info input.mp4
 **thumbnail**
 - `-s, --start <sec>` — Time position in seconds (default: 1)
 
-### Learning Mode
+### `--dry-run` — Learn Instead of Googling
 
-Use `--dry-run` to see the exact FFmpeg command without executing it:
+"But I don't know what it's doing under the hood..."
+
+Add `--dry-run` to print the FFmpeg command without executing it:
 
 ```bash
-$ npx ffmpeg-quick compress --dry-run input.mp4
+$ npx ffmpeg-quick gif --dry-run input.mp4 -s 10 -d 3
 
-  ffmpeg -i input.mp4 -c:v libx264 -crf 23 -preset medium -c:a aac -movflags +faststart input-compressed.mp4
+  ffmpeg -ss 10 -t 3 -i input.mp4 -vf fps=15,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse -loop 0 input-output.gif
 ```
+
+For those who want to learn FFmpeg, it doubles as a cheat sheet that always gives you the right command.
 
 ### Links
 
@@ -114,6 +143,33 @@ $ npx ffmpeg-quick compress --dry-run input.mp4
 <a id="japanese"></a>
 
 ## 日本語
+
+FFmpegは最強の動画ツール。でも毎回こうなる：
+
+```bash
+# 「動画を圧縮したいだけなのに…」
+ffmpeg -i input.mp4 -c:v libx264 -crf 23 -preset medium -c:a aac -movflags +faststart output.mp4
+```
+
+```bash
+# 「GIF作りたいだけなのに…」
+ffmpeg -ss 10 -t 3 -i input.mp4 \
+  -vf "fps=15,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" \
+  -loop 0 output.gif
+```
+
+`-c:v`って何だっけ。`-crf`のデフォルトいくつだっけ。GIFのpalettegen構文どうだっけ。
+
+**毎回ググる。毎回Stack Overflowを開く。毎回コピペする。**
+
+ffmpeg-quickはその「ググる→コピペ」をスキップする：
+
+```bash
+npx ffmpeg-quick compress input.mp4
+npx ffmpeg-quick gif input.mp4 -s 10 -d 3
+```
+
+覚えることは動詞だけ。`compress`、`gif`、`audio`。オプションは必要なときだけ足す。
 
 ### インストール
 
@@ -199,15 +255,19 @@ npx ffmpeg-quick info input.mp4
 **thumbnail**
 - `-s, --start <sec>` — 抽出位置（秒、デフォルト: 1）
 
-### 学習モード
+### `--dry-run` — ググる代わりに
 
-`--dry-run` で実行せずにFFmpegコマンドを確認できます：
+「でも中で何やってるかわからないのは怖い」
+
+`--dry-run` をつけると、実行せずにFFmpegコマンドだけ表示する：
 
 ```bash
-$ npx ffmpeg-quick compress --dry-run input.mp4
+$ npx ffmpeg-quick gif --dry-run input.mp4 -s 10 -d 3
 
-  ffmpeg -i input.mp4 -c:v libx264 -crf 23 -preset medium -c:a aac -movflags +faststart input-compressed.mp4
+  ffmpeg -ss 10 -t 3 -i input.mp4 -vf fps=15,scale=480:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse -loop 0 input-output.gif
 ```
+
+FFmpegを学びたい人にとっては「正しいコマンドを教えてくれるチートシート」にもなる。
 
 ### リンク
 
