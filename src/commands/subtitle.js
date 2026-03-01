@@ -36,7 +36,7 @@ export function register(program) {
       };
       const color = colorMap[opts.color] || colorMap.white;
 
-      const alignMap = { bottom: "2", top: "6", center: "5" };
+      const alignMap = { bottom: "2", top: "8", center: "5" };
       const align = alignMap[opts.position] || "2";
 
       const escapedSub = escapeSubPath(sub);

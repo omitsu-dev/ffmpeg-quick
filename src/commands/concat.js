@@ -39,7 +39,7 @@ export function register(program) {
         run(args, { dryRun: opts.dryRun });
       } else {
         // Demuxer-based concat (stream copy, fast)
-        const listContent = inputs.map((f) => `file '${f}'`).join("\n");
+        const listContent = inputs.map((f) => `file '${f.replace(/'/g, "'\\''")}'`).join("\n");
 
         if (opts.dryRun) {
           console.log("\n  # File list (auto-generated):");
