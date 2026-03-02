@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify all commands register
+        run: node bin/ffmpeg-quick.js --help
+
+      - name: Install FFmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Test --dry-run for each command
+        run: |
+          node bin/ffmpeg-quick.js compress test.mp4 --dry-run
+          node bin/ffmpeg-quick.js gif test.mp4 --dry-run
+          node bin/ffmpeg-quick.js webm test.mp4 --dry-run
+          node bin/ffmpeg-quick.js hls test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio test.mp4 --dry-run
+          node bin/ffmpeg-quick.js thumbnail test.mp4 --dry-run
+          node bin/ffmpeg-quick.js strip-audio test.mp4 --dry-run
+          node bin/ffmpeg-quick.js info test.mp4 --dry-run
+          node bin/ffmpeg-quick.js subtitle test.mp4 subs.srt --dry-run
+          node bin/ffmpeg-quick.js speed test.mp4 2 --dry-run
+          node bin/ffmpeg-quick.js trim test.mp4 -s 0 -d 5 --dry-run
+          node bin/ffmpeg-quick.js resize test.mp4 -w 1280 --dry-run
+          node bin/ffmpeg-quick.js crop test.mp4 640x480 --dry-run
+
+      - name: Test real encode (compress a generated video)
+        run: |
+          ffmpeg -f lavfi -i testsrc=duration=2:size=320x240:rate=15 -c:v libx264 -pix_fmt yuv420p test-input.mp4
+          node bin/ffmpeg-quick.js compress test-input.mp4 -y
+          node bin/ffmpeg-quick.js trim test-input.mp4 -s 0 -d 1 -y
+          node bin/ffmpeg-quick.js resize test-input.mp4 -w 160 -y
+          node bin/ffmpeg-quick.js crop test-input.mp4 160x120 -y
+          node bin/ffmpeg-quick.js gif test-input.mp4 -y
+          node bin/ffmpeg-quick.js info test-input.mp4
