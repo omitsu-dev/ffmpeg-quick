@@ -13,13 +13,16 @@ import { register as concat } from "../src/commands/concat.js";
 import { register as subtitle } from "../src/commands/subtitle.js";
 import { register as speed } from "../src/commands/speed.js";
 import { register as stabilize } from "../src/commands/stabilize.js";
+import { register as trim } from "../src/commands/trim.js";
+import { register as resize } from "../src/commands/resize.js";
+import { register as crop } from "../src/commands/crop.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.0.0");
+  .version("1.1.0");
 
 compress(program);
 gif(program);
@@ -33,5 +36,8 @@ concat(program);
 subtitle(program);
 speed(program);
 stabilize(program);
+trim(program);
+resize(program);
+crop(program);
 
 program.parse();

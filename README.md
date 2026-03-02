@@ -65,6 +65,9 @@ npx ffmpeg-quick compress input.mp4
 | `subtitle` | Burn subtitles into video |
 | `speed` | Change playback speed |
 | `stabilize` | Stabilize shaky video (2-pass) |
+| `trim` | Cut a section from a video |
+| `resize` | Resize video to a target width or height |
+| `crop` | Crop a region from the video |
 
 ### Usage
 
@@ -104,6 +107,15 @@ npx ffmpeg-quick speed input.mp4 2
 
 # Stabilize shaky footage (2-pass, automatic)
 npx ffmpeg-quick stabilize shaky.mp4
+
+# Trim video (start at 30s, 10s duration)
+npx ffmpeg-quick trim input.mp4 -s 30 -d 10
+
+# Resize to 1280px width (height auto)
+npx ffmpeg-quick resize input.mp4 -w 1280
+
+# Crop center 1280x720 region
+npx ffmpeg-quick crop input.mp4 1280x720
 ```
 
 ### Common Options
@@ -150,6 +162,19 @@ npx ffmpeg-quick stabilize shaky.mp4
 **stabilize**
 - `--strength <n>` — Smoothing strength, 1-30 (default: 10)
 - `--shakiness <n>` — Input shakiness estimate, 1-10 (default: 5)
+
+**trim**
+- `-s, --start <time>` — Start time in seconds or HH:MM:SS (default: 0)
+- `-d, --duration <time>` — Duration in seconds
+- `-t, --to <time>` — End time in seconds or HH:MM:SS
+
+**resize**
+- `-w, --width <px>` — Target width (height auto-scaled)
+- `-h, --height <px>` — Target height (width auto-scaled)
+
+**crop**
+- `<size>` — Crop size as WxH (e.g. 1280x720)
+- `--pos <x:y>` — Top-left position (default: center)
 
 ### The Hard Stuff, Made Easy
 
@@ -265,6 +290,9 @@ npx ffmpeg-quick compress input.mp4
 | `subtitle` | 字幕を焼き込み |
 | `speed` | 再生速度を変更 |
 | `stabilize` | 手ブレ補正（2パス） |
+| `trim` | 動画の一部を切り出し |
+| `resize` | 解像度を変更 |
+| `crop` | 動画の一部を切り抜き |
 
 ### 使い方
 
@@ -304,6 +332,15 @@ npx ffmpeg-quick speed input.mp4 2
 
 # 手ブレ補正（2パス自動実行）
 npx ffmpeg-quick stabilize shaky.mp4
+
+# 動画の切り出し（30秒地点から10秒間）
+npx ffmpeg-quick trim input.mp4 -s 30 -d 10
+
+# 幅1280pxにリサイズ（高さ自動）
+npx ffmpeg-quick resize input.mp4 -w 1280
+
+# 中央を1280x720で切り抜き
+npx ffmpeg-quick crop input.mp4 1280x720
 ```
 
 ### 共通オプション
@@ -350,6 +387,19 @@ npx ffmpeg-quick stabilize shaky.mp4
 **stabilize**
 - `--strength <n>` — 補正の強さ 1-30（デフォルト: 10）
 - `--shakiness <n>` — 入力のブレ推定値 1-10（デフォルト: 5）
+
+**trim**
+- `-s, --start <time>` — 開始位置（秒 or HH:MM:SS、デフォルト: 0）
+- `-d, --duration <time>` — 長さ（秒）
+- `-t, --to <time>` — 終了位置（秒 or HH:MM:SS）
+
+**resize**
+- `-w, --width <px>` — 幅を指定（高さ自動）
+- `-h, --height <px>` — 高さを指定（幅自動）
+
+**crop**
+- `<size>` — 切り抜きサイズ WxH（例: 1280x720）
+- `--pos <x:y>` — 左上の位置（デフォルト: center）
 
 ### 面倒なやつ、全部やります
 
