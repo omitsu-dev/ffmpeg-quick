@@ -16,13 +16,15 @@ import { register as stabilize } from "../src/commands/stabilize.js";
 import { register as trim } from "../src/commands/trim.js";
 import { register as resize } from "../src/commands/resize.js";
 import { register as crop } from "../src/commands/crop.js";
+import { register as watermark } from "../src/commands/watermark.js";
+import { register as denoise } from "../src/commands/denoise.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.1.0");
+  .version("1.2.0");
 
 compress(program);
 gif(program);
@@ -39,5 +41,7 @@ stabilize(program);
 trim(program);
 resize(program);
 crop(program);
+watermark(program);
+denoise(program);
 
 program.parse();
