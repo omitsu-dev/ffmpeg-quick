@@ -68,6 +68,10 @@ npx ffmpeg-quick compress input.mp4
 | `trim` | Cut a section from a video |
 | `resize` | Resize video to a target width or height |
 | `crop` | Crop a region from the video |
+| `watermark` | Add image watermark overlay |
+| `denoise` | Reduce noise from video or audio |
+
+> Prefer a visual interface? Try the [FFmpeg Command Generator](https://32blog.com/en/tools/ffmpeg-command-generator) on 32blog — build commands by clicking options instead of typing flags.
 
 ### Usage
 
@@ -116,6 +120,12 @@ npx ffmpeg-quick resize input.mp4 -w 1280
 
 # Crop center 1280x720 region
 npx ffmpeg-quick crop input.mp4 1280x720
+
+# Add watermark (bottom-right, 10px margin)
+npx ffmpeg-quick watermark input.mp4 logo.png
+
+# Denoise video (medium strength)
+npx ffmpeg-quick denoise input.mp4 --strength medium
 ```
 
 ### Common Options
@@ -175,6 +185,15 @@ npx ffmpeg-quick crop input.mp4 1280x720
 **crop**
 - `<size>` — Crop size as WxH (e.g. 1280x720)
 - `--pos <x:y>` — Top-left position (default: center)
+
+**watermark**
+- `<image>` — Watermark image file (PNG recommended)
+- `--position <pos>` — Position: topleft, top, topright, left, center, right, bottomleft, bottom, bottomright (default: bottomright)
+- `--margin <n>` — Margin from edge in pixels (default: 10)
+
+**denoise**
+- `--target <type>` — Target: video or audio (default: video)
+- `--strength <level>` — Strength: light, medium, strong (default: medium)
 
 ### The Hard Stuff, Made Easy
 
@@ -293,6 +312,10 @@ npx ffmpeg-quick compress input.mp4
 | `trim` | 動画の一部を切り出し |
 | `resize` | 解像度を変更 |
 | `crop` | 動画の一部を切り抜き |
+| `watermark` | 透かし画像をオーバーレイ |
+| `denoise` | 映像/音声のノイズ除去 |
+
+> GUIでコマンドを組み立てたい場合は、32blogの [FFmpegコマンドジェネレーター](https://32blog.com/ja/tools/ffmpeg-command-generator) をどうぞ。
 
 ### 使い方
 
@@ -341,6 +364,12 @@ npx ffmpeg-quick resize input.mp4 -w 1280
 
 # 中央を1280x720で切り抜き
 npx ffmpeg-quick crop input.mp4 1280x720
+
+# 透かし追加（右下、マージン10px）
+npx ffmpeg-quick watermark input.mp4 logo.png
+
+# ノイズ除去（映像、中程度）
+npx ffmpeg-quick denoise input.mp4 --strength medium
 ```
 
 ### 共通オプション
@@ -400,6 +429,15 @@ npx ffmpeg-quick crop input.mp4 1280x720
 **crop**
 - `<size>` — 切り抜きサイズ WxH（例: 1280x720）
 - `--pos <x:y>` — 左上の位置（デフォルト: center）
+
+**watermark**
+- `<image>` — 透かし画像ファイル（PNG推奨）
+- `--position <pos>` — 位置: topleft, top, topright, left, center, right, bottomleft, bottom, bottomright（デフォルト: bottomright）
+- `--margin <n>` — 端からのマージン（px、デフォルト: 10）
+
+**denoise**
+- `--target <type>` — 対象: video または audio（デフォルト: video）
+- `--strength <level>` — 強度: light, medium, strong（デフォルト: medium）
 
 ### 面倒なやつ、全部やります
 
