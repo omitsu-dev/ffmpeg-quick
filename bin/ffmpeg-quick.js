@@ -123,13 +123,21 @@ import { register as interlace } from "../src/commands/interlace.js";
 import { register as fieldOrder } from "../src/commands/field-order.js";
 import { register as censor } from "../src/commands/censor.js";
 import { register as encodeAv1 } from "../src/commands/encode-av1.js";
+import { register as segment } from "../src/commands/segment.js";
+import { register as thumbnailGrid } from "../src/commands/thumbnail-grid.js";
+import { register as audioNoiseReduce } from "../src/commands/audio-noise-reduce.js";
+import { register as videoToFrames } from "../src/commands/video-to-frames.js";
+import { register as colorKey } from "../src/commands/color-key.js";
+import { register as tremolo } from "../src/commands/tremolo.js";
+import { register as vibrato } from "../src/commands/vibrato.js";
+import { register as deshake } from "../src/commands/deshake.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.6.0");
+  .version("2.7.0");
 
 compress(program);
 gif(program);
@@ -253,5 +261,13 @@ interlace(program);
 fieldOrder(program);
 censor(program);
 encodeAv1(program);
+segment(program);
+thumbnailGrid(program);
+audioNoiseReduce(program);
+videoToFrames(program);
+colorKey(program);
+tremolo(program);
+vibrato(program);
+deshake(program);
 
 program.parse();

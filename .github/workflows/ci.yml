@@ -150,6 +150,14 @@ jobs:
           node bin/ffmpeg-quick.js field-order test.mp4 tff --dry-run
           node bin/ffmpeg-quick.js censor test.mp4 -s 0 -e 1 --dry-run
           node bin/ffmpeg-quick.js encode-av1 test.mp4 --dry-run
+          node bin/ffmpeg-quick.js segment test.mp4 10 --dry-run
+          node bin/ffmpeg-quick.js thumbnail-grid test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-noise-reduce test.mp4 --dry-run
+          node bin/ffmpeg-quick.js video-to-frames test.mp4 --dry-run
+          node bin/ffmpeg-quick.js color-key test.mp4 bg.jpg --dry-run
+          node bin/ffmpeg-quick.js tremolo test.mp4 --dry-run
+          node bin/ffmpeg-quick.js vibrato test.mp4 --dry-run
+          node bin/ffmpeg-quick.js deshake test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -217,3 +225,8 @@ jobs:
           node bin/ffmpeg-quick.js audio-reverse test-input.mp4 -y
           node bin/ffmpeg-quick.js interlace test-input.mp4 -y
           node bin/ffmpeg-quick.js censor test-input.mp4 -s 0 -e 1 -y
+          node bin/ffmpeg-quick.js segment test-input.mp4 1 -y
+          node bin/ffmpeg-quick.js audio-noise-reduce test-input.mp4 -y
+          node bin/ffmpeg-quick.js tremolo test-input.mp4 -y
+          node bin/ffmpeg-quick.js vibrato test-input.mp4 -y
+          node bin/ffmpeg-quick.js deshake test-input.mp4 -y
