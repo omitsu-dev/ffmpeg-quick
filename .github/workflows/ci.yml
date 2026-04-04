@@ -119,6 +119,12 @@ jobs:
           node bin/ffmpeg-quick.js progress test.mp4 10 --dry-run
           node bin/ffmpeg-quick.js backdrop test.mp4 --dry-run
           node bin/ffmpeg-quick.js count-frames test.mp4 --dry-run
+          node bin/ffmpeg-quick.js motion-blur test.mp4 --dry-run
+          node bin/ffmpeg-quick.js border test.mp4 --dry-run
+          node bin/ffmpeg-quick.js multi-audio test.mp4 test.mp3 --dry-run
+          node bin/ffmpeg-quick.js duration test.mp4 --dry-run
+          node bin/ffmpeg-quick.js sample-rate test.mp4 44100 --dry-run
+          node bin/ffmpeg-quick.js bit-depth test.mp4 16 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -176,3 +182,6 @@ jobs:
           node bin/ffmpeg-quick.js backdrop test-input.mp4 --size 640x480 -y
           node bin/ffmpeg-quick.js gif-to-video test-input-gif.gif -y
           node bin/ffmpeg-quick.js count-frames test-input.mp4
+          node bin/ffmpeg-quick.js motion-blur test-input.mp4 -y
+          node bin/ffmpeg-quick.js border test-input.mp4 -y
+          node bin/ffmpeg-quick.js duration test-input.mp4

@@ -92,13 +92,19 @@ import { register as gifToVideo } from "../src/commands/gif-to-video.js";
 import { register as progress } from "../src/commands/progress.js";
 import { register as backdrop } from "../src/commands/backdrop.js";
 import { register as countFrames } from "../src/commands/count-frames.js";
+import { register as motionBlur } from "../src/commands/motion-blur.js";
+import { register as border } from "../src/commands/border.js";
+import { register as multiAudio } from "../src/commands/multi-audio.js";
+import { register as duration } from "../src/commands/duration.js";
+import { register as sampleRate } from "../src/commands/sample-rate.js";
+import { register as bitDepth } from "../src/commands/bit-depth.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.1.0");
+  .version("2.2.0");
 
 compress(program);
 gif(program);
@@ -191,5 +197,11 @@ gifToVideo(program);
 progress(program);
 backdrop(program);
 countFrames(program);
+motionBlur(program);
+border(program);
+multiAudio(program);
+duration(program);
+sampleRate(program);
+bitDepth(program);
 
 program.parse();
