@@ -147,13 +147,21 @@ import { register as blend } from "../src/commands/blend.js";
 import { register as transpose } from "../src/commands/transpose.js";
 import { register as videoInfoOverlay } from "../src/commands/video-info-overlay.js";
 import { register as fadeBetween } from "../src/commands/fade-between.js";
+import { register as audioLowpass } from "../src/commands/audio-lowpass.js";
+import { register as audioHighpass } from "../src/commands/audio-highpass.js";
+import { register as delogo } from "../src/commands/delogo.js";
+import { register as encodeProres } from "../src/commands/encode-prores.js";
+import { register as thumbnailStrip } from "../src/commands/thumbnail-strip.js";
+import { register as audioBandpass } from "../src/commands/audio-bandpass.js";
+import { register as freezeDetect } from "../src/commands/freeze-detect.js";
+import { register as audioStereoWiden } from "../src/commands/audio-stereo-widen.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.9.0");
+  .version("2.10.0");
 
 compress(program);
 gif(program);
@@ -301,5 +309,13 @@ blend(program);
 transpose(program);
 videoInfoOverlay(program);
 fadeBetween(program);
+audioLowpass(program);
+audioHighpass(program);
+delogo(program);
+encodeProres(program);
+thumbnailStrip(program);
+audioBandpass(program);
+freezeDetect(program);
+audioStereoWiden(program);
 
 program.parse();
