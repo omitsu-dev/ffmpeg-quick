@@ -45,6 +45,16 @@ jobs:
           node bin/ffmpeg-quick.js trim test.mp4 -s 0 -d 5 --dry-run
           node bin/ffmpeg-quick.js resize test.mp4 -w 1280 --dry-run
           node bin/ffmpeg-quick.js crop test.mp4 640x480 --dry-run
+          node bin/ffmpeg-quick.js rotate test.mp4 90 --dry-run
+          node bin/ffmpeg-quick.js fade test.mp4 --in 1 --out 1 --duration 10 --dry-run
+          node bin/ffmpeg-quick.js reverse test.mp4 --dry-run
+          node bin/ffmpeg-quick.js volume test.mp4 2.0 --dry-run
+          node bin/ffmpeg-quick.js fps test.mp4 30 --dry-run
+          node bin/ffmpeg-quick.js snapshot test.mp4 --interval 1 --dry-run
+          node bin/ffmpeg-quick.js split test.mp4 10 --dry-run
+          node bin/ffmpeg-quick.js overlay test.mp4 test.mp4 --dry-run
+          node bin/ffmpeg-quick.js convert test.mp4 mov --dry-run
+          node bin/ffmpeg-quick.js loop test.mp4 3 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -55,3 +65,12 @@ jobs:
           node bin/ffmpeg-quick.js crop test-input.mp4 160x120 -y
           node bin/ffmpeg-quick.js gif test-input.mp4 -y
           node bin/ffmpeg-quick.js info test-input.mp4
+          node bin/ffmpeg-quick.js rotate test-input.mp4 90 -y
+          node bin/ffmpeg-quick.js reverse test-input.mp4 -y
+          node bin/ffmpeg-quick.js fps test-input.mp4 10 -y
+          node bin/ffmpeg-quick.js volume test-input.mp4 1.5 -y
+          node bin/ffmpeg-quick.js fade test-input.mp4 --in 0.5 --out 0.5 --duration 2 -y
+          node bin/ffmpeg-quick.js convert test-input.mp4 mkv -y
+          node bin/ffmpeg-quick.js loop test-input.mp4 2 -y
+          node bin/ffmpeg-quick.js snapshot test-input.mp4 --interval 1 -y
+          node bin/ffmpeg-quick.js split test-input.mp4 1 -y
