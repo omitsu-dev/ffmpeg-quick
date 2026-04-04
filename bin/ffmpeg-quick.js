@@ -139,13 +139,21 @@ import { register as pip } from "../src/commands/pip.js";
 import { register as audioChannels } from "../src/commands/audio-channels.js";
 import { register as scale2x } from "../src/commands/scale2x.js";
 import { register as hdrToSdr } from "../src/commands/hdr-to-sdr.js";
+import { register as encodeVp9 } from "../src/commands/encode-vp9.js";
+import { register as audioNormalizePeak } from "../src/commands/audio-normalize-peak.js";
+import { register as extractAudioChannel } from "../src/commands/extract-audio-channel.js";
+import { register as repeatFrame } from "../src/commands/repeat-frame.js";
+import { register as blend } from "../src/commands/blend.js";
+import { register as transpose } from "../src/commands/transpose.js";
+import { register as videoInfoOverlay } from "../src/commands/video-info-overlay.js";
+import { register as fadeBetween } from "../src/commands/fade-between.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.8.0");
+  .version("2.9.0");
 
 compress(program);
 gif(program);
@@ -285,5 +293,13 @@ pip(program);
 audioChannels(program);
 scale2x(program);
 hdrToSdr(program);
+encodeVp9(program);
+audioNormalizePeak(program);
+extractAudioChannel(program);
+repeatFrame(program);
+blend(program);
+transpose(program);
+videoInfoOverlay(program);
+fadeBetween(program);
 
 program.parse();

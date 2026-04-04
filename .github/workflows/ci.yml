@@ -166,6 +166,14 @@ jobs:
           node bin/ffmpeg-quick.js audio-channels test.mp4 1 --dry-run
           node bin/ffmpeg-quick.js scale2x test.mp4 --dry-run
           node bin/ffmpeg-quick.js hdr-to-sdr test.mp4 --dry-run
+          node bin/ffmpeg-quick.js encode-vp9 test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-normalize-peak test.mp4 --dry-run
+          node bin/ffmpeg-quick.js extract-audio-channel test.mp4 left --dry-run
+          node bin/ffmpeg-quick.js repeat-frame test.mp4 2 --dry-run
+          node bin/ffmpeg-quick.js blend test.mp4 test.mp4 --dry-run
+          node bin/ffmpeg-quick.js transpose test.mp4 --dry-run
+          node bin/ffmpeg-quick.js video-info-overlay test.mp4 --dry-run
+          node bin/ffmpeg-quick.js fade-between test.mp4 test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -241,3 +249,9 @@ jobs:
           node bin/ffmpeg-quick.js audio-speed test-input.mp4 1.5 -y
           node bin/ffmpeg-quick.js audio-channels test-input.mp4 1 -y
           node bin/ffmpeg-quick.js pip test-input.mp4 test-input.mp4 -y
+          node bin/ffmpeg-quick.js audio-normalize-peak test-input.mp4 -y
+          node bin/ffmpeg-quick.js extract-audio-channel test-input.mp4 left -y
+          node bin/ffmpeg-quick.js repeat-frame test-input.mp4 1 -y
+          node bin/ffmpeg-quick.js blend test-input.mp4 test-input.mp4 -y
+          node bin/ffmpeg-quick.js transpose test-input.mp4 -y
+          node bin/ffmpeg-quick.js video-info-overlay test-input.mp4 -y
