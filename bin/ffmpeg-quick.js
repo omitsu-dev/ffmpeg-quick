@@ -155,13 +155,21 @@ import { register as thumbnailStrip } from "../src/commands/thumbnail-strip.js";
 import { register as audioBandpass } from "../src/commands/audio-bandpass.js";
 import { register as freezeDetect } from "../src/commands/freeze-detect.js";
 import { register as audioStereoWiden } from "../src/commands/audio-stereo-widen.js";
+import { register as audioKaraoke } from "../src/commands/audio-karaoke.js";
+import { register as cropDetect } from "../src/commands/crop-detect.js";
+import { register as gifPalette } from "../src/commands/gif-palette.js";
+import { register as frameStep } from "../src/commands/frame-step.js";
+import { register as encodeDnxhd } from "../src/commands/encode-dnxhd.js";
+import { register as audioBassBoost } from "../src/commands/audio-bass-boost.js";
+import { register as audioTrebleBoost } from "../src/commands/audio-treble-boost.js";
+import { register as sceneCut } from "../src/commands/scene-cut.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.10.0");
+  .version("2.11.0");
 
 compress(program);
 gif(program);
@@ -317,5 +325,13 @@ thumbnailStrip(program);
 audioBandpass(program);
 freezeDetect(program);
 audioStereoWiden(program);
+audioKaraoke(program);
+cropDetect(program);
+gifPalette(program);
+frameStep(program);
+encodeDnxhd(program);
+audioBassBoost(program);
+audioTrebleBoost(program);
+sceneCut(program);
 
 program.parse();

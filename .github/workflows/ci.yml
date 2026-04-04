@@ -182,6 +182,14 @@ jobs:
           node bin/ffmpeg-quick.js audio-bandpass test.mp4 --dry-run
           node bin/ffmpeg-quick.js freeze-detect test.mp4 --dry-run
           node bin/ffmpeg-quick.js audio-stereo-widen test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-karaoke test.mp4 --dry-run
+          node bin/ffmpeg-quick.js crop-detect test.mp4 --dry-run
+          node bin/ffmpeg-quick.js gif-palette test.mp4 --dry-run
+          node bin/ffmpeg-quick.js frame-step test.mp4 5 --dry-run
+          node bin/ffmpeg-quick.js encode-dnxhd test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-bass-boost test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-treble-boost test.mp4 --dry-run
+          node bin/ffmpeg-quick.js scene-cut test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -268,3 +276,8 @@ jobs:
           node bin/ffmpeg-quick.js delogo test-input.mp4 10:10:100:50 -y
           node bin/ffmpeg-quick.js audio-bandpass test-input.mp4 -y
           node bin/ffmpeg-quick.js audio-stereo-widen test-input.mp4 -y
+          node bin/ffmpeg-quick.js audio-karaoke test-input.mp4 -y
+          node bin/ffmpeg-quick.js gif-palette test-input.mp4 -y
+          node bin/ffmpeg-quick.js frame-step test-input.mp4 2 -y
+          node bin/ffmpeg-quick.js audio-bass-boost test-input.mp4 -y
+          node bin/ffmpeg-quick.js audio-treble-boost test-input.mp4 -y

@@ -1,6 +1,6 @@
 {
   "name": "ffmpeg-quick",
-  "version": "2.10.0",
+  "version": "2.11.0",
   "description": "Quick FFmpeg presets for common video tasks / FFmpegプリセットCLI",
   "type": "module",
   "bin": {
