@@ -75,13 +75,22 @@ import { register as negative } from "../src/commands/negative.js";
 import { register as posterize } from "../src/commands/posterize.js";
 import { register as sidecar } from "../src/commands/sidecar.js";
 import { register as preview } from "../src/commands/preview.js";
+import { register as tonemap } from "../src/commands/tonemap.js";
+import { register as alpha } from "../src/commands/alpha.js";
+import { register as audioVisualize } from "../src/commands/audio-visualize.js";
+import { register as audioFade } from "../src/commands/audio-fade.js";
+import { register as glitch } from "../src/commands/glitch.js";
+import { register as pixelate } from "../src/commands/pixelate.js";
+import { register as timecode } from "../src/commands/timecode.js";
+import { register as compare } from "../src/commands/compare.js";
+import { register as concatAudio } from "../src/commands/concat-audio.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.9.0");
+  .version("2.0.0");
 
 compress(program);
 gif(program);
@@ -157,5 +166,14 @@ negative(program);
 posterize(program);
 sidecar(program);
 preview(program);
+tonemap(program);
+alpha(program);
+audioVisualize(program);
+audioFade(program);
+glitch(program);
+pixelate(program);
+timecode(program);
+compare(program);
+concatAudio(program);
 
 program.parse();

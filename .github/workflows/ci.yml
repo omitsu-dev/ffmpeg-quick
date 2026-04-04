@@ -102,6 +102,15 @@ jobs:
           node bin/ffmpeg-quick.js posterize test.mp4 --dry-run
           node bin/ffmpeg-quick.js sidecar test.mp4 subs.srt --dry-run
           node bin/ffmpeg-quick.js preview test.mp4 --dry-run
+          node bin/ffmpeg-quick.js tonemap test.mp4 --dry-run
+          node bin/ffmpeg-quick.js alpha test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-visualize test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-fade test.mp4 --in 2 --dry-run
+          node bin/ffmpeg-quick.js glitch test.mp4 --dry-run
+          node bin/ffmpeg-quick.js pixelate test.mp4 --dry-run
+          node bin/ffmpeg-quick.js timecode test.mp4 --dry-run
+          node bin/ffmpeg-quick.js compare test.mp4 test.mp4 --dry-run
+          node bin/ffmpeg-quick.js concat-audio test.mp3 test.mp3 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -150,3 +159,7 @@ jobs:
           node bin/ffmpeg-quick.js edge test-input.mp4 -y
           node bin/ffmpeg-quick.js negative test-input.mp4 -y
           node bin/ffmpeg-quick.js posterize test-input.mp4 -y
+          node bin/ffmpeg-quick.js glitch test-input.mp4 -y
+          node bin/ffmpeg-quick.js pixelate test-input.mp4 -y
+          node bin/ffmpeg-quick.js timecode test-input.mp4 -y
+          node bin/ffmpeg-quick.js compare test-input.mp4 test-input.mp4 -y
