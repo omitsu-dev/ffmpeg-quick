@@ -74,6 +74,16 @@ jobs:
           node bin/ffmpeg-quick.js scenes test.mp4 --dry-run
           node bin/ffmpeg-quick.js dash test.mp4 --dry-run
           node bin/ffmpeg-quick.js frames-to-video 'frame-%04d.png' --dry-run
+          node bin/ffmpeg-quick.js chromakey test.mp4 bg.jpg --dry-run
+          node bin/ffmpeg-quick.js aspect test.mp4 16:9 --dry-run
+          node bin/ffmpeg-quick.js bitrate test.mp4 1M --dry-run
+          node bin/ffmpeg-quick.js stereo test.mp4 --mode mono --dry-run
+          node bin/ffmpeg-quick.js waveform test.mp4 --dry-run
+          node bin/ffmpeg-quick.js spectrum test.mp4 --dry-run
+          node bin/ffmpeg-quick.js crossfade test.mp4 test.mp4 1 --dry-run
+          node bin/ffmpeg-quick.js tile test.mp4 --dry-run
+          node bin/ffmpeg-quick.js metadata test.mp4 --title Test --dry-run
+          node bin/ffmpeg-quick.js drawbox test.mp4 100:50:200:150 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -106,3 +116,10 @@ jobs:
           node bin/ffmpeg-quick.js sharpen test-input.mp4 -y
           node bin/ffmpeg-quick.js grayscale test-input.mp4 -y
           node bin/ffmpeg-quick.js sepia test-input.mp4 -y
+          node bin/ffmpeg-quick.js aspect test-input.mp4 1:1 -y
+          node bin/ffmpeg-quick.js bitrate test-input.mp4 500k -y
+          node bin/ffmpeg-quick.js stereo test-input.mp4 --mode mono -y
+          node bin/ffmpeg-quick.js tile test-input.mp4 --cols 2 --rows 2 -y
+          node bin/ffmpeg-quick.js metadata test-input.mp4 --title "Test Video" -y
+          node bin/ffmpeg-quick.js drawbox test-input.mp4 10:10:100:80 -y
+          node bin/ffmpeg-quick.js crossfade test-input.mp4 test-input.mp4 0.5 -y

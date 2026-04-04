@@ -47,13 +47,23 @@ import { register as sepia } from "../src/commands/sepia.js";
 import { register as scenes } from "../src/commands/scenes.js";
 import { register as dash } from "../src/commands/dash.js";
 import { register as framesToVideo } from "../src/commands/frames-to-video.js";
+import { register as chromakey } from "../src/commands/chromakey.js";
+import { register as aspect } from "../src/commands/aspect.js";
+import { register as bitrate } from "../src/commands/bitrate.js";
+import { register as stereo } from "../src/commands/stereo.js";
+import { register as waveform } from "../src/commands/waveform.js";
+import { register as spectrum } from "../src/commands/spectrum.js";
+import { register as crossfade } from "../src/commands/crossfade.js";
+import { register as tile } from "../src/commands/tile.js";
+import { register as metadata } from "../src/commands/metadata.js";
+import { register as drawbox } from "../src/commands/drawbox.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.6.0");
+  .version("1.7.0");
 
 compress(program);
 gif(program);
@@ -101,5 +111,15 @@ sepia(program);
 scenes(program);
 dash(program);
 framesToVideo(program);
+chromakey(program);
+aspect(program);
+bitrate(program);
+stereo(program);
+waveform(program);
+spectrum(program);
+crossfade(program);
+tile(program);
+metadata(program);
+drawbox(program);
 
 program.parse();
