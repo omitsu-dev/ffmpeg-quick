@@ -57,13 +57,23 @@ import { register as crossfade } from "../src/commands/crossfade.js";
 import { register as tile } from "../src/commands/tile.js";
 import { register as metadata } from "../src/commands/metadata.js";
 import { register as drawbox } from "../src/commands/drawbox.js";
+import { register as equalize } from "../src/commands/equalize.js";
+import { register as stack } from "../src/commands/stack.js";
+import { register as detectSilence } from "../src/commands/detect-silence.js";
+import { register as extractSubtitle } from "../src/commands/extract-subtitle.js";
+import { register as audioDelay } from "../src/commands/audio-delay.js";
+import { register as deflicker } from "../src/commands/deflicker.js";
+import { register as noise } from "../src/commands/noise.js";
+import { register as vintage } from "../src/commands/vintage.js";
+import { register as zoom } from "../src/commands/zoom.js";
+import { register as interpolate } from "../src/commands/interpolate.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.7.0");
+  .version("1.8.0");
 
 compress(program);
 gif(program);
@@ -121,5 +131,15 @@ crossfade(program);
 tile(program);
 metadata(program);
 drawbox(program);
+equalize(program);
+stack(program);
+detectSilence(program);
+extractSubtitle(program);
+audioDelay(program);
+deflicker(program);
+noise(program);
+vintage(program);
+zoom(program);
+interpolate(program);
 
 program.parse();

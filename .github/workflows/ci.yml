@@ -84,6 +84,16 @@ jobs:
           node bin/ffmpeg-quick.js tile test.mp4 --dry-run
           node bin/ffmpeg-quick.js metadata test.mp4 --title Test --dry-run
           node bin/ffmpeg-quick.js drawbox test.mp4 100:50:200:150 --dry-run
+          node bin/ffmpeg-quick.js equalize test.mp4 --dry-run
+          node bin/ffmpeg-quick.js stack test.mp4 test.mp4 --dry-run
+          node bin/ffmpeg-quick.js detect-silence test.mp4 --dry-run
+          node bin/ffmpeg-quick.js extract-subtitle test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-delay test.mp4 500 --dry-run
+          node bin/ffmpeg-quick.js deflicker test.mp4 --dry-run
+          node bin/ffmpeg-quick.js noise test.mp4 --dry-run
+          node bin/ffmpeg-quick.js vintage test.mp4 --dry-run
+          node bin/ffmpeg-quick.js zoom test.mp4 --dry-run
+          node bin/ffmpeg-quick.js interpolate test.mp4 60 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -123,3 +133,8 @@ jobs:
           node bin/ffmpeg-quick.js metadata test-input.mp4 --title "Test Video" -y
           node bin/ffmpeg-quick.js drawbox test-input.mp4 10:10:100:80 -y
           node bin/ffmpeg-quick.js crossfade test-input.mp4 test-input.mp4 0.5 -y
+          node bin/ffmpeg-quick.js equalize test-input.mp4 -y
+          node bin/ffmpeg-quick.js stack test-input.mp4 test-input.mp4 -y
+          node bin/ffmpeg-quick.js deflicker test-input.mp4 -y
+          node bin/ffmpeg-quick.js noise test-input.mp4 -y
+          node bin/ffmpeg-quick.js vintage test-input.mp4 -y
