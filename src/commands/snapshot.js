@@ -1,4 +1,5 @@
 import { run } from "../run.js";
+import { parsePositiveNumber } from "../utils.js";
 import { basename, extname, dirname, join } from "node:path";
 
 export function register(program) {
@@ -12,11 +13,7 @@ export function register(program) {
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
     .action((input, opts) => {
-      const interval = parseFloat(opts.interval);
-      if (isNaN(interval) || interval <= 0) {
-        console.error("Error: interval must be a positive number.");
-        process.exit(1);
-      }
+      const interval = parsePositiveNumber(opts.interval, "interval");
 
       const dir = dirname(input);
       const base = basename(input, extname(input));

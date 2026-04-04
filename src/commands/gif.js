@@ -14,7 +14,7 @@ export function register(program) {
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
     .action((input, opts) => {
-      const out = opts.output || outputName(input, "output", ".gif");
+      const out = opts.output || outputName(input, "gif", ".gif");
       const filter = `fps=${opts.fps},scale=${opts.width}:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse`;
       const args = [
         "-ss", opts.start,

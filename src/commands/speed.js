@@ -1,5 +1,5 @@
 import { run } from "../run.js";
-import { outputName } from "../utils.js";
+import { outputName, parsePositiveNumber } from "../utils.js";
 
 /**
  * Build atempo filter chain for a given speed multiplier.
@@ -38,11 +38,7 @@ export function register(program) {
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
     .action((input, factor, opts) => {
-      const speed = parseFloat(factor);
-      if (isNaN(speed) || speed <= 0) {
-        console.error("Error: speed factor must be a positive number.");
-        process.exit(1);
-      }
+      const speed = parsePositiveNumber(factor, "speed factor");
 
       const suffix = speed >= 1 ? `${speed}x` : `slow${speed}x`;
       const out = opts.output || outputName(input, suffix);
@@ -53,10 +49,8 @@ export function register(program) {
       const args = ["-i", input];
 
       if (opts.audio === false) {
-        // --no-audio: drop audio
         args.push("-filter:v", setpts, "-an");
       } else {
-        // Process both video and audio
         const atempo = buildAtempo(speed);
         args.push("-filter:v", setpts, "-filter:a", atempo);
       }

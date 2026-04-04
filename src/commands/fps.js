@@ -1,5 +1,5 @@
 import { run } from "../run.js";
-import { outputName } from "../utils.js";
+import { outputName, parsePositiveNumber } from "../utils.js";
 
 export function register(program) {
   program
@@ -11,12 +11,7 @@ export function register(program) {
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
     .action((input, rate, opts) => {
-      const fps = parseFloat(rate);
-      if (isNaN(fps) || fps <= 0) {
-        console.error("Error: frame rate must be a positive number.");
-        process.exit(1);
-      }
-
+      const fps = parsePositiveNumber(rate, "frame rate");
       const out = opts.output || outputName(input, `${fps}fps`);
       const args = ["-i", input, "-vf", `fps=${fps}`, "-c:a", "copy"];
 

@@ -1,4 +1,5 @@
 import { run } from "../run.js";
+import { parsePositiveNumber } from "../utils.js";
 import { basename, extname, dirname, join } from "node:path";
 
 export function register(program) {
@@ -11,11 +12,7 @@ export function register(program) {
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
     .action((input, seconds, opts) => {
-      const duration = parseFloat(seconds);
-      if (isNaN(duration) || duration <= 0) {
-        console.error("Error: segment duration must be a positive number.");
-        process.exit(1);
-      }
+      const duration = parsePositiveNumber(seconds, "segment duration");
 
       const dir = dirname(input);
       const base = basename(input, extname(input));

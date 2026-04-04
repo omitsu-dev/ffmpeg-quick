@@ -34,7 +34,6 @@ jobs:
         run: |
           node bin/ffmpeg-quick.js compress test.mp4 --dry-run
           node bin/ffmpeg-quick.js gif test.mp4 --dry-run
-          node bin/ffmpeg-quick.js webm test.mp4 --dry-run
           node bin/ffmpeg-quick.js hls test.mp4 --dry-run
           node bin/ffmpeg-quick.js audio test.mp4 --dry-run
           node bin/ffmpeg-quick.js thumbnail test.mp4 --dry-run

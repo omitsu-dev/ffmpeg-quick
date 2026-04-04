@@ -1,5 +1,7 @@
 import { run } from "../run.js";
-import { outputName } from "../utils.js";
+import { outputName, parsePreset } from "../utils.js";
+
+const STRENGTH_PRESETS = { light: 5, medium: 15, strong: 30 };
 
 export function register(program) {
   program
@@ -12,13 +14,7 @@ export function register(program) {
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
     .action((input, opts) => {
-      const presets = { light: 5, medium: 15, strong: 30 };
-      const strength = presets[opts.strength] || parseInt(opts.strength, 10);
-
-      if (isNaN(strength) || strength <= 0) {
-        console.error("Error: --strength must be light, medium, strong, or a positive number.");
-        process.exit(1);
-      }
+      const strength = parsePreset(opts.strength, STRENGTH_PRESETS, "--strength");
 
       let filter;
       if (opts.region) {

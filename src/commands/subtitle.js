@@ -8,7 +8,6 @@ import { resolve } from "node:path";
  */
 function escapeSubPath(p) {
   const abs = resolve(p);
-  // FFmpeg subtitle filter treats : and \ as special chars
   return abs.replace(/\\/g, "/").replace(/:/g, "\\:");
 }
 
@@ -19,8 +18,8 @@ export function register(program) {
     .argument("<input>", "Input video file")
     .argument("<sub>", "Subtitle file (.srt, .ass, .vtt)")
     .option("--font-size <n>", "Font size", "24")
-    .option("--color <name>", "Font color (white, yellow, etc.)", "white")
-    .option("--position <pos>", "Position: bottom, top, center", "bottom")
+    .option("--color <name>", "Font color (white, yellow, red, green, cyan)", "white")
+    .option("--pos <position>", "Position: bottom, top, center", "bottom")
     .option("-o, --output <path>", "Output file path")
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
@@ -37,7 +36,7 @@ export function register(program) {
       const color = colorMap[opts.color] || colorMap.white;
 
       const alignMap = { bottom: "2", top: "8", center: "5" };
-      const align = alignMap[opts.position] || "2";
+      const align = alignMap[opts.pos] || "2";
 
       const escapedSub = escapeSubPath(sub);
       const style = `FontSize=${opts.fontSize},PrimaryColour=${color},Alignment=${align}`;

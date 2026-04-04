@@ -1,5 +1,5 @@
 import { run } from "../run.js";
-import { outputName } from "../utils.js";
+import { outputName, parsePositiveNumber } from "../utils.js";
 
 export function register(program) {
   program
@@ -11,15 +11,11 @@ export function register(program) {
     .option("--dry-run", "Print the FFmpeg command without running it")
     .option("-y", "Overwrite output without asking")
     .action((input, count, opts) => {
-      const n = parseInt(count, 10);
-      if (isNaN(n) || n < 1) {
-        console.error("Error: loop count must be a positive integer.");
-        process.exit(1);
-      }
+      const n = parsePositiveNumber(count, "loop count");
 
-      const out = opts.output || outputName(input, `loop${n}`);
+      const out = opts.output || outputName(input, `loop${Math.floor(n)}`);
       const args = [
-        "-stream_loop", String(n - 1),
+        "-stream_loop", String(Math.floor(n) - 1),
         "-i", input,
         "-c", "copy",
       ];
