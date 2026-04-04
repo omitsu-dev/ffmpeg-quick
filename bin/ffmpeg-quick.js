@@ -28,13 +28,21 @@ import { register as split } from "../src/commands/split.js";
 import { register as overlay } from "../src/commands/overlay.js";
 import { register as convert } from "../src/commands/convert.js";
 import { register as loop } from "../src/commands/loop.js";
+import { register as blur } from "../src/commands/blur.js";
+import { register as mirror } from "../src/commands/mirror.js";
+import { register as picture } from "../src/commands/picture.js";
+import { register as color } from "../src/commands/color.js";
+import { register as mute } from "../src/commands/mute.js";
+import { register as pipGrid } from "../src/commands/pip-grid.js";
+import { register as boomerang } from "../src/commands/boomerang.js";
+import { register as deinterlace } from "../src/commands/deinterlace.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.3.0");
+  .version("1.4.0");
 
 compress(program);
 gif(program);
@@ -63,5 +71,13 @@ split(program);
 overlay(program);
 convert(program);
 loop(program);
+blur(program);
+mirror(program);
+picture(program);
+color(program);
+mute(program);
+pipGrid(program);
+boomerang(program);
+deinterlace(program);
 
 program.parse();

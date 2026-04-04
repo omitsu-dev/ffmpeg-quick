@@ -55,6 +55,14 @@ jobs:
           node bin/ffmpeg-quick.js overlay test.mp4 test.mp4 --dry-run
           node bin/ffmpeg-quick.js convert test.mp4 mov --dry-run
           node bin/ffmpeg-quick.js loop test.mp4 3 --dry-run
+          node bin/ffmpeg-quick.js blur test.mp4 --dry-run
+          node bin/ffmpeg-quick.js mirror test.mp4 --dry-run
+          node bin/ffmpeg-quick.js picture test.jpg test.mp3 --dry-run
+          node bin/ffmpeg-quick.js color test.mp4 --brightness 0.1 --dry-run
+          node bin/ffmpeg-quick.js mute test.mp4 -s 0 -e 5 --dry-run
+          node bin/ffmpeg-quick.js pip-grid test.mp4 test.mp4 --dry-run
+          node bin/ffmpeg-quick.js boomerang test.mp4 --dry-run
+          node bin/ffmpeg-quick.js deinterlace test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -74,3 +82,9 @@ jobs:
           node bin/ffmpeg-quick.js loop test-input.mp4 2 -y
           node bin/ffmpeg-quick.js snapshot test-input.mp4 --interval 1 -y
           node bin/ffmpeg-quick.js split test-input.mp4 1 -y
+          node bin/ffmpeg-quick.js blur test-input.mp4 -y
+          node bin/ffmpeg-quick.js mirror test-input.mp4 -y
+          node bin/ffmpeg-quick.js color test-input.mp4 --brightness 0.1 --saturation 1.5 -y
+          node bin/ffmpeg-quick.js boomerang test-input.mp4 -y
+          node bin/ffmpeg-quick.js deinterlace test-input.mp4 -y
+          node bin/ffmpeg-quick.js mute test-input.mp4 -s 0 -e 1 -y
