@@ -35,13 +35,25 @@ import { register as mute } from "../src/commands/mute.js";
 import { register as pipGrid } from "../src/commands/pip-grid.js";
 import { register as boomerang } from "../src/commands/boomerang.js";
 import { register as deinterlace } from "../src/commands/deinterlace.js";
+import { register as text } from "../src/commands/text.js";
+import { register as mixAudio } from "../src/commands/mix-audio.js";
+import { register as normalize } from "../src/commands/normalize.js";
+import { register as pad } from "../src/commands/pad.js";
+import { register as freeze } from "../src/commands/freeze.js";
+import { register as vignette } from "../src/commands/vignette.js";
+import { register as sharpen } from "../src/commands/sharpen.js";
+import { register as grayscale } from "../src/commands/grayscale.js";
+import { register as sepia } from "../src/commands/sepia.js";
+import { register as scenes } from "../src/commands/scenes.js";
+import { register as dash } from "../src/commands/dash.js";
+import { register as framesToVideo } from "../src/commands/frames-to-video.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.5.0");
+  .version("1.6.0");
 
 compress(program);
 gif(program);
@@ -77,5 +89,17 @@ mute(program);
 pipGrid(program);
 boomerang(program);
 deinterlace(program);
+text(program);
+mixAudio(program);
+normalize(program);
+pad(program);
+freeze(program);
+vignette(program);
+sharpen(program);
+grayscale(program);
+sepia(program);
+scenes(program);
+dash(program);
+framesToVideo(program);
 
 program.parse();

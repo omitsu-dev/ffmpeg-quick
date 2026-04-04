@@ -62,6 +62,18 @@ jobs:
           node bin/ffmpeg-quick.js pip-grid test.mp4 test.mp4 --dry-run
           node bin/ffmpeg-quick.js boomerang test.mp4 --dry-run
           node bin/ffmpeg-quick.js deinterlace test.mp4 --dry-run
+          node bin/ffmpeg-quick.js text test.mp4 Hello --dry-run
+          node bin/ffmpeg-quick.js mix-audio test.mp4 test.mp3 --dry-run
+          node bin/ffmpeg-quick.js normalize test.mp4 --dry-run
+          node bin/ffmpeg-quick.js pad test.mp4 1920x1080 --dry-run
+          node bin/ffmpeg-quick.js freeze test.mp4 1 3 --dry-run
+          node bin/ffmpeg-quick.js vignette test.mp4 --dry-run
+          node bin/ffmpeg-quick.js sharpen test.mp4 --dry-run
+          node bin/ffmpeg-quick.js grayscale test.mp4 --dry-run
+          node bin/ffmpeg-quick.js sepia test.mp4 --dry-run
+          node bin/ffmpeg-quick.js scenes test.mp4 --dry-run
+          node bin/ffmpeg-quick.js dash test.mp4 --dry-run
+          node bin/ffmpeg-quick.js frames-to-video 'frame-%04d.png' --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -87,3 +99,10 @@ jobs:
           node bin/ffmpeg-quick.js boomerang test-input.mp4 -y
           node bin/ffmpeg-quick.js deinterlace test-input.mp4 -y
           node bin/ffmpeg-quick.js mute test-input.mp4 -s 0 -e 1 -y
+          node bin/ffmpeg-quick.js text test-input.mp4 "Hello World" -y
+          node bin/ffmpeg-quick.js normalize test-input.mp4 -y
+          node bin/ffmpeg-quick.js pad test-input.mp4 640x480 -y
+          node bin/ffmpeg-quick.js vignette test-input.mp4 -y
+          node bin/ffmpeg-quick.js sharpen test-input.mp4 -y
+          node bin/ffmpeg-quick.js grayscale test-input.mp4 -y
+          node bin/ffmpeg-quick.js sepia test-input.mp4 -y
