@@ -115,13 +115,21 @@ import { register as deblock } from "../src/commands/deblock.js";
 import { register as audioGate } from "../src/commands/audio-gate.js";
 import { register as phaser } from "../src/commands/phaser.js";
 import { register as flanger } from "../src/commands/flanger.js";
+import { register as surround } from "../src/commands/surround.js";
+import { register as loudnessMeter } from "../src/commands/loudness-meter.js";
+import { register as audioReverse } from "../src/commands/audio-reverse.js";
+import { register as embedThumbnail } from "../src/commands/embed-thumbnail.js";
+import { register as interlace } from "../src/commands/interlace.js";
+import { register as fieldOrder } from "../src/commands/field-order.js";
+import { register as censor } from "../src/commands/censor.js";
+import { register as encodeAv1 } from "../src/commands/encode-av1.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.5.0");
+  .version("2.6.0");
 
 compress(program);
 gif(program);
@@ -237,5 +245,13 @@ deblock(program);
 audioGate(program);
 phaser(program);
 flanger(program);
+surround(program);
+loudnessMeter(program);
+audioReverse(program);
+embedThumbnail(program);
+interlace(program);
+fieldOrder(program);
+censor(program);
+encodeAv1(program);
 
 program.parse();

@@ -142,6 +142,14 @@ jobs:
           node bin/ffmpeg-quick.js audio-gate test.mp4 --dry-run
           node bin/ffmpeg-quick.js phaser test.mp4 --dry-run
           node bin/ffmpeg-quick.js flanger test.mp4 --dry-run
+          node bin/ffmpeg-quick.js surround test.mp4 --dry-run
+          node bin/ffmpeg-quick.js loudness-meter test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-reverse test.mp4 --dry-run
+          node bin/ffmpeg-quick.js embed-thumbnail test.mp4 test.jpg --dry-run
+          node bin/ffmpeg-quick.js interlace test.mp4 --dry-run
+          node bin/ffmpeg-quick.js field-order test.mp4 tff --dry-run
+          node bin/ffmpeg-quick.js censor test.mp4 -s 0 -e 1 --dry-run
+          node bin/ffmpeg-quick.js encode-av1 test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -204,3 +212,8 @@ jobs:
           node bin/ffmpeg-quick.js duration test-input.mp4
           node bin/ffmpeg-quick.js cinematic test-input.mp4 -y
           node bin/ffmpeg-quick.js color-balance test-input.mp4 --rs 0.3 -y
+          node bin/ffmpeg-quick.js surround test-input.mp4 -y
+          node bin/ffmpeg-quick.js loudness-meter test-input.mp4
+          node bin/ffmpeg-quick.js audio-reverse test-input.mp4 -y
+          node bin/ffmpeg-quick.js interlace test-input.mp4 -y
+          node bin/ffmpeg-quick.js censor test-input.mp4 -s 0 -e 1 -y
