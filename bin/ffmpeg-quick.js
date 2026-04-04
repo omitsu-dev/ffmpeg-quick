@@ -131,13 +131,21 @@ import { register as colorKey } from "../src/commands/color-key.js";
 import { register as tremolo } from "../src/commands/tremolo.js";
 import { register as vibrato } from "../src/commands/vibrato.js";
 import { register as deshake } from "../src/commands/deshake.js";
+import { register as subtitleBurn } from "../src/commands/subtitle-burn.js";
+import { register as audioSpeed } from "../src/commands/audio-speed.js";
+import { register as encodeH265 } from "../src/commands/encode-h265.js";
+import { register as silenceInsert } from "../src/commands/silence-insert.js";
+import { register as pip } from "../src/commands/pip.js";
+import { register as audioChannels } from "../src/commands/audio-channels.js";
+import { register as scale2x } from "../src/commands/scale2x.js";
+import { register as hdrToSdr } from "../src/commands/hdr-to-sdr.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.7.0");
+  .version("2.8.0");
 
 compress(program);
 gif(program);
@@ -269,5 +277,13 @@ colorKey(program);
 tremolo(program);
 vibrato(program);
 deshake(program);
+subtitleBurn(program);
+audioSpeed(program);
+encodeH265(program);
+silenceInsert(program);
+pip(program);
+audioChannels(program);
+scale2x(program);
+hdrToSdr(program);
 
 program.parse();
