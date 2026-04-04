@@ -128,6 +128,13 @@ jobs:
           node bin/ffmpeg-quick.js oscilloscope test.mp4 --dry-run
           node bin/ffmpeg-quick.js extract-stream test.mp4 v:0 --dry-run
           node bin/ffmpeg-quick.js blackdetect test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-compressor test.mp4 --dry-run
+          node bin/ffmpeg-quick.js limiter test.mp4 --dry-run
+          node bin/ffmpeg-quick.js reverb test.mp4 --dry-run
+          node bin/ffmpeg-quick.js echo-effect test.mp4 --dry-run
+          node bin/ffmpeg-quick.js chorus test.mp4 --dry-run
+          node bin/ffmpeg-quick.js cinematic test.mp4 --dry-run
+          node bin/ffmpeg-quick.js color-balance test.mp4 --rs 0.1 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -188,3 +195,5 @@ jobs:
           node bin/ffmpeg-quick.js motion-blur test-input.mp4 -y
           node bin/ffmpeg-quick.js border test-input.mp4 -y
           node bin/ffmpeg-quick.js duration test-input.mp4
+          node bin/ffmpeg-quick.js cinematic test-input.mp4 -y
+          node bin/ffmpeg-quick.js color-balance test-input.mp4 --rs 0.3 -y

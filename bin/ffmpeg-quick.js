@@ -101,13 +101,20 @@ import { register as bitDepth } from "../src/commands/bit-depth.js";
 import { register as oscilloscope } from "../src/commands/oscilloscope.js";
 import { register as extractStream } from "../src/commands/extract-stream.js";
 import { register as blackdetect } from "../src/commands/blackdetect.js";
+import { register as audioCompressor } from "../src/commands/audio-compressor.js";
+import { register as limiter } from "../src/commands/limiter.js";
+import { register as reverb } from "../src/commands/reverb.js";
+import { register as echoEffect } from "../src/commands/echo-effect.js";
+import { register as chorus } from "../src/commands/chorus.js";
+import { register as cinematic } from "../src/commands/cinematic.js";
+import { register as colorBalance } from "../src/commands/color-balance.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.3.0");
+  .version("2.4.0");
 
 compress(program);
 gif(program);
@@ -209,5 +216,12 @@ bitDepth(program);
 oscilloscope(program);
 extractStream(program);
 blackdetect(program);
+audioCompressor(program);
+limiter(program);
+reverb(program);
+echoEffect(program);
+chorus(program);
+cinematic(program);
+colorBalance(program);
 
 program.parse();
