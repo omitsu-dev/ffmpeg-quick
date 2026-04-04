@@ -67,13 +67,21 @@ import { register as noise } from "../src/commands/noise.js";
 import { register as vintage } from "../src/commands/vintage.js";
 import { register as zoom } from "../src/commands/zoom.js";
 import { register as interpolate } from "../src/commands/interpolate.js";
+import { register as replaceAudio } from "../src/commands/replace-audio.js";
+import { register as slideshow } from "../src/commands/slideshow.js";
+import { register as chroma } from "../src/commands/chroma.js";
+import { register as edge } from "../src/commands/edge.js";
+import { register as negative } from "../src/commands/negative.js";
+import { register as posterize } from "../src/commands/posterize.js";
+import { register as sidecar } from "../src/commands/sidecar.js";
+import { register as preview } from "../src/commands/preview.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.8.0");
+  .version("1.9.0");
 
 compress(program);
 gif(program);
@@ -141,5 +149,13 @@ noise(program);
 vintage(program);
 zoom(program);
 interpolate(program);
+replaceAudio(program);
+slideshow(program);
+chroma(program);
+edge(program);
+negative(program);
+posterize(program);
+sidecar(program);
+preview(program);
 
 program.parse();

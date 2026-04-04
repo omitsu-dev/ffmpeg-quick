@@ -94,6 +94,14 @@ jobs:
           node bin/ffmpeg-quick.js vintage test.mp4 --dry-run
           node bin/ffmpeg-quick.js zoom test.mp4 --dry-run
           node bin/ffmpeg-quick.js interpolate test.mp4 60 --dry-run
+          node bin/ffmpeg-quick.js replace-audio test.mp4 test.mp3 --dry-run
+          node bin/ffmpeg-quick.js slideshow test.jpg test.jpg --dry-run
+          node bin/ffmpeg-quick.js chroma test.mp4 --hue 45 --dry-run
+          node bin/ffmpeg-quick.js edge test.mp4 --dry-run
+          node bin/ffmpeg-quick.js negative test.mp4 --dry-run
+          node bin/ffmpeg-quick.js posterize test.mp4 --dry-run
+          node bin/ffmpeg-quick.js sidecar test.mp4 subs.srt --dry-run
+          node bin/ffmpeg-quick.js preview test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -138,3 +146,7 @@ jobs:
           node bin/ffmpeg-quick.js deflicker test-input.mp4 -y
           node bin/ffmpeg-quick.js noise test-input.mp4 -y
           node bin/ffmpeg-quick.js vintage test-input.mp4 -y
+          node bin/ffmpeg-quick.js chroma test-input.mp4 --hue 90 -y
+          node bin/ffmpeg-quick.js edge test-input.mp4 -y
+          node bin/ffmpeg-quick.js negative test-input.mp4 -y
+          node bin/ffmpeg-quick.js posterize test-input.mp4 -y
