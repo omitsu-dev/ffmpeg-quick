@@ -98,13 +98,16 @@ import { register as multiAudio } from "../src/commands/multi-audio.js";
 import { register as duration } from "../src/commands/duration.js";
 import { register as sampleRate } from "../src/commands/sample-rate.js";
 import { register as bitDepth } from "../src/commands/bit-depth.js";
+import { register as oscilloscope } from "../src/commands/oscilloscope.js";
+import { register as extractStream } from "../src/commands/extract-stream.js";
+import { register as blackdetect } from "../src/commands/blackdetect.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.2.0");
+  .version("2.3.0");
 
 compress(program);
 gif(program);
@@ -203,5 +206,8 @@ multiAudio(program);
 duration(program);
 sampleRate(program);
 bitDepth(program);
+oscilloscope(program);
+extractStream(program);
+blackdetect(program);
 
 program.parse();

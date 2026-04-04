@@ -125,6 +125,9 @@ jobs:
           node bin/ffmpeg-quick.js duration test.mp4 --dry-run
           node bin/ffmpeg-quick.js sample-rate test.mp4 44100 --dry-run
           node bin/ffmpeg-quick.js bit-depth test.mp4 16 --dry-run
+          node bin/ffmpeg-quick.js oscilloscope test.mp4 --dry-run
+          node bin/ffmpeg-quick.js extract-stream test.mp4 v:0 --dry-run
+          node bin/ffmpeg-quick.js blackdetect test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
