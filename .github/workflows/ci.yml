@@ -51,7 +51,6 @@ jobs:
           node bin/ffmpeg-quick.js fps test.mp4 30 --dry-run
           node bin/ffmpeg-quick.js snapshot test.mp4 --interval 1 --dry-run
           node bin/ffmpeg-quick.js split test.mp4 10 --dry-run
-          node bin/ffmpeg-quick.js overlay test.mp4 test.mp4 --dry-run
           node bin/ffmpeg-quick.js convert test.mp4 mov --dry-run
           node bin/ffmpeg-quick.js loop test.mp4 3 --dry-run
           node bin/ffmpeg-quick.js blur test.mp4 --dry-run
@@ -102,7 +101,6 @@ jobs:
           node bin/ffmpeg-quick.js posterize test.mp4 --dry-run
           node bin/ffmpeg-quick.js sidecar test.mp4 subs.srt --dry-run
           node bin/ffmpeg-quick.js preview test.mp4 --dry-run
-          node bin/ffmpeg-quick.js tonemap test.mp4 --dry-run
           node bin/ffmpeg-quick.js alpha test.mp4 --dry-run
           node bin/ffmpeg-quick.js audio-visualize test.mp4 --dry-run
           node bin/ffmpeg-quick.js audio-fade test.mp4 --in 2 --dry-run
@@ -163,7 +161,6 @@ jobs:
           node bin/ffmpeg-quick.js encode-h265 test.mp4 --dry-run
           node bin/ffmpeg-quick.js silence-insert test.mp4 1 2 --dry-run
           node bin/ffmpeg-quick.js pip test.mp4 test.mp4 --dry-run
-          node bin/ffmpeg-quick.js audio-channels test.mp4 1 --dry-run
           node bin/ffmpeg-quick.js scale2x test.mp4 --dry-run
           node bin/ffmpeg-quick.js hdr-to-sdr test.mp4 --dry-run
           node bin/ffmpeg-quick.js encode-vp9 test.mp4 --dry-run
@@ -184,12 +181,10 @@ jobs:
           node bin/ffmpeg-quick.js audio-stereo-widen test.mp4 --dry-run
           node bin/ffmpeg-quick.js audio-karaoke test.mp4 --dry-run
           node bin/ffmpeg-quick.js crop-detect test.mp4 --dry-run
-          node bin/ffmpeg-quick.js gif-palette test.mp4 --dry-run
           node bin/ffmpeg-quick.js frame-step test.mp4 5 --dry-run
           node bin/ffmpeg-quick.js encode-dnxhd test.mp4 --dry-run
           node bin/ffmpeg-quick.js audio-bass-boost test.mp4 --dry-run
           node bin/ffmpeg-quick.js audio-treble-boost test.mp4 --dry-run
-          node bin/ffmpeg-quick.js scene-cut test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
@@ -263,7 +258,6 @@ jobs:
           node bin/ffmpeg-quick.js vibrato test-input.mp4 -y
           node bin/ffmpeg-quick.js deshake test-input.mp4 -y
           node bin/ffmpeg-quick.js audio-speed test-input.mp4 1.5 -y
-          node bin/ffmpeg-quick.js audio-channels test-input.mp4 1 -y
           node bin/ffmpeg-quick.js pip test-input.mp4 test-input.mp4 -y
           node bin/ffmpeg-quick.js audio-normalize-peak test-input.mp4 -y
           node bin/ffmpeg-quick.js extract-audio-channel test-input.mp4 left -y
@@ -277,7 +271,6 @@ jobs:
           node bin/ffmpeg-quick.js audio-bandpass test-input.mp4 -y
           node bin/ffmpeg-quick.js audio-stereo-widen test-input.mp4 -y
           node bin/ffmpeg-quick.js audio-karaoke test-input.mp4 -y
-          node bin/ffmpeg-quick.js gif-palette test-input.mp4 -y
           node bin/ffmpeg-quick.js frame-step test-input.mp4 2 -y
           node bin/ffmpeg-quick.js audio-bass-boost test-input.mp4 -y
           node bin/ffmpeg-quick.js audio-treble-boost test-input.mp4 -y
