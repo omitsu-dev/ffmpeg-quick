@@ -18,13 +18,23 @@ import { register as resize } from "../src/commands/resize.js";
 import { register as crop } from "../src/commands/crop.js";
 import { register as watermark } from "../src/commands/watermark.js";
 import { register as denoise } from "../src/commands/denoise.js";
+import { register as rotate } from "../src/commands/rotate.js";
+import { register as fade } from "../src/commands/fade.js";
+import { register as reverse } from "../src/commands/reverse.js";
+import { register as volume } from "../src/commands/volume.js";
+import { register as fps } from "../src/commands/fps.js";
+import { register as snapshot } from "../src/commands/snapshot.js";
+import { register as split } from "../src/commands/split.js";
+import { register as overlay } from "../src/commands/overlay.js";
+import { register as convert } from "../src/commands/convert.js";
+import { register as loop } from "../src/commands/loop.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("1.2.0");
+  .version("1.3.0");
 
 compress(program);
 gif(program);
@@ -43,5 +53,15 @@ resize(program);
 crop(program);
 watermark(program);
 denoise(program);
+rotate(program);
+fade(program);
+reverse(program);
+volume(program);
+fps(program);
+snapshot(program);
+split(program);
+overlay(program);
+convert(program);
+loop(program);
 
 program.parse();
