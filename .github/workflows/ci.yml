@@ -111,10 +111,19 @@ jobs:
           node bin/ffmpeg-quick.js timecode test.mp4 --dry-run
           node bin/ffmpeg-quick.js compare test.mp4 test.mp4 --dry-run
           node bin/ffmpeg-quick.js concat-audio test.mp3 test.mp3 --dry-run
+          node bin/ffmpeg-quick.js audio-pitch test.mp4 2 --dry-run
+          node bin/ffmpeg-quick.js audio-eq test.mp4 --bass 5 --dry-run
+          node bin/ffmpeg-quick.js pan-audio test.mp4 -0.5 --dry-run
+          node bin/ffmpeg-quick.js trim-silence test.mp4 --dry-run
+          node bin/ffmpeg-quick.js gif-to-video test.gif --dry-run
+          node bin/ffmpeg-quick.js progress test.mp4 10 --dry-run
+          node bin/ffmpeg-quick.js backdrop test.mp4 --dry-run
+          node bin/ffmpeg-quick.js count-frames test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
           ffmpeg -f lavfi -i testsrc=duration=2:size=320x240:rate=15 -c:v libx264 -pix_fmt yuv420p test-input.mp4
+          ffmpeg -f lavfi -i testsrc=duration=1:size=160x120:rate=5 test-input-gif.gif
           node bin/ffmpeg-quick.js compress test-input.mp4 -y
           node bin/ffmpeg-quick.js trim test-input.mp4 -s 0 -d 1 -y
           node bin/ffmpeg-quick.js resize test-input.mp4 -w 160 -y
@@ -163,3 +172,7 @@ jobs:
           node bin/ffmpeg-quick.js pixelate test-input.mp4 -y
           node bin/ffmpeg-quick.js timecode test-input.mp4 -y
           node bin/ffmpeg-quick.js compare test-input.mp4 test-input.mp4 -y
+          node bin/ffmpeg-quick.js progress test-input.mp4 2 -y
+          node bin/ffmpeg-quick.js backdrop test-input.mp4 --size 640x480 -y
+          node bin/ffmpeg-quick.js gif-to-video test-input-gif.gif -y
+          node bin/ffmpeg-quick.js count-frames test-input.mp4

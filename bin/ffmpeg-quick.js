@@ -84,13 +84,21 @@ import { register as pixelate } from "../src/commands/pixelate.js";
 import { register as timecode } from "../src/commands/timecode.js";
 import { register as compare } from "../src/commands/compare.js";
 import { register as concatAudio } from "../src/commands/concat-audio.js";
+import { register as audioPitch } from "../src/commands/audio-pitch.js";
+import { register as audioEq } from "../src/commands/audio-eq.js";
+import { register as panAudio } from "../src/commands/pan-audio.js";
+import { register as trimSilence } from "../src/commands/trim-silence.js";
+import { register as gifToVideo } from "../src/commands/gif-to-video.js";
+import { register as progress } from "../src/commands/progress.js";
+import { register as backdrop } from "../src/commands/backdrop.js";
+import { register as countFrames } from "../src/commands/count-frames.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.0.0");
+  .version("2.1.0");
 
 compress(program);
 gif(program);
@@ -175,5 +183,13 @@ pixelate(program);
 timecode(program);
 compare(program);
 concatAudio(program);
+audioPitch(program);
+audioEq(program);
+panAudio(program);
+trimSilence(program);
+gifToVideo(program);
+progress(program);
+backdrop(program);
+countFrames(program);
 
 program.parse();
