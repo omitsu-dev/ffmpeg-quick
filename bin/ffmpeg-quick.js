@@ -108,13 +108,20 @@ import { register as echoEffect } from "../src/commands/echo-effect.js";
 import { register as chorus } from "../src/commands/chorus.js";
 import { register as cinematic } from "../src/commands/cinematic.js";
 import { register as colorBalance } from "../src/commands/color-balance.js";
+import { register as lut } from "../src/commands/lut.js";
+import { register as channelSplit } from "../src/commands/channel-split.js";
+import { register as histogramOverlay } from "../src/commands/histogram-overlay.js";
+import { register as deblock } from "../src/commands/deblock.js";
+import { register as audioGate } from "../src/commands/audio-gate.js";
+import { register as phaser } from "../src/commands/phaser.js";
+import { register as flanger } from "../src/commands/flanger.js";
 
 const program = new Command();
 
 program
   .name("ffmpeg-quick")
   .description("Quick FFmpeg presets for common video tasks")
-  .version("2.4.0");
+  .version("2.5.0");
 
 compress(program);
 gif(program);
@@ -223,5 +230,12 @@ echoEffect(program);
 chorus(program);
 cinematic(program);
 colorBalance(program);
+lut(program);
+channelSplit(program);
+histogramOverlay(program);
+deblock(program);
+audioGate(program);
+phaser(program);
+flanger(program);
 
 program.parse();

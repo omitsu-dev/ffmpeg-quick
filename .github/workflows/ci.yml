@@ -135,6 +135,13 @@ jobs:
           node bin/ffmpeg-quick.js chorus test.mp4 --dry-run
           node bin/ffmpeg-quick.js cinematic test.mp4 --dry-run
           node bin/ffmpeg-quick.js color-balance test.mp4 --rs 0.1 --dry-run
+          node bin/ffmpeg-quick.js lut test.mp4 lut.cube --dry-run
+          node bin/ffmpeg-quick.js channel-split test.mp4 --dry-run
+          node bin/ffmpeg-quick.js histogram-overlay test.mp4 --dry-run
+          node bin/ffmpeg-quick.js deblock test.mp4 --dry-run
+          node bin/ffmpeg-quick.js audio-gate test.mp4 --dry-run
+          node bin/ffmpeg-quick.js phaser test.mp4 --dry-run
+          node bin/ffmpeg-quick.js flanger test.mp4 --dry-run
 
       - name: Test real encode (compress a generated video)
         run: |
