@@ -111,7 +111,7 @@ jobs:
           node bin/ffmpeg-quick.js concat-audio test.mp3 test.mp3 --dry-run
           node bin/ffmpeg-quick.js audio-pitch test.mp4 2 --dry-run
           node bin/ffmpeg-quick.js audio-eq test.mp4 --bass 5 --dry-run
-          node bin/ffmpeg-quick.js pan-audio test.mp4 -0.5 --dry-run
+          node bin/ffmpeg-quick.js pan-audio test.mp4 --dry-run -- -0.5
           node bin/ffmpeg-quick.js trim-silence test.mp4 --dry-run
           node bin/ffmpeg-quick.js gif-to-video test.gif --dry-run
           node bin/ffmpeg-quick.js progress test.mp4 10 --dry-run
